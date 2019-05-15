@@ -1,0 +1,48 @@
+在Mapper.xml 里面配置传入参数，有两种写法：#{} 、${}。作为OGNL 表达式，
+都可以实现参数的替换。这两种方式的区别在哪里？什么时候应该用哪一种？
+要搞清楚这个问题，我们要先来说一下PrepareStatement 和Statement 的区别。
+1、两个都是接口，PrepareStatement 是继承自Statement 的；
+2、Statement 处理静态SQL，PreparedStatement 主要用于执行带参数的语句；
+3、PreparedStatement 的addBatch()方法一次性发送多个查询给数据库；
+4、PS 相似SQL 只编译一次（对语句进行了缓存，相当于一个函数）,比如语句相
+同参数不同，可以减少编译次数；
+5、PS 可以防止SQL 注入。
+MyBatis 任意语句的默认值：PREPARED
+这两个符号的解析方式是不一样的：
+#会解析为Prepared Statement 的参数标记符，参数部分用？代替。传入的参数会
+经过类型检查和安全检查。
+
+
+（mybatis-standalone - MyBatisTest - testSelect()）
+==> Preparing: select * from blog where bid = ?
+==> Parameters: 1(Integer)
+<== Columns: bid, name, author_id
+<== Row: 1, 咕泡学院, 1001
+<== Total: 1
+查询结果：Blog{bid=1, name='咕泡学院', authorId='1001'}
+
+
+$只会做字符串替换，比如参数是咕泡学院，结果如下：
+（mybatis-standalone - MyBatisTest - selectBlogByBean ()）
+==> Preparing: select bid,name,author_id authorId from blog where name = '咕泡学院'
+==> Parameters:
+<== Columns: bid, name, authorId
+<== Row: 1, 咕泡学院, 1001
+<== Total: 1
+查询结果：[Blog{bid=1, name='咕泡学院', authorId='1001'}]
+
+
+
+#和$的区别：
+1、是否能防止SQL 注入：$方式不会对符号转义，不能防止SQL 注入
+2、性能：$方式没有预编译，不会缓存
+结论：
+1、能用#的地方都用#
+2、常量的替换，比如排序条件中的字段名称，不用加单引号，可以使用$
+
+
+
+
+
+
+

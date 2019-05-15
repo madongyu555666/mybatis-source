@@ -1,0 +1,4 @@
+一级缓存：在同一个会话（SqlSession）中共享，默认开启，维护在BaseExecutor
+中。
+二级缓存：在同一个namespace 共享，需要在Mapper.xml 中开启，维护在
+CachingExecutor 中。

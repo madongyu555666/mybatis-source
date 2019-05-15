@@ -1,0 +1,6 @@
+接口查找SQL：MapperProxy
+日志输出：ConnectionLogger、StatementLogger
+连接池：PooledDataSource 管理的PooledConnection
+延迟加载：ProxyFactory（JAVASSIST、CGLIB）
+插件：Plugin
+Spring 集成：SqlSessionTemplate 的内部类SqlSessionInterceptor

@@ -1,0 +1,2 @@
+通过TypeHandler，例如Java 类型中的String 要保存成varchar，就会自动调
+用相应的Handler。如果没有系统自带的TypeHandler，也可以自定义。

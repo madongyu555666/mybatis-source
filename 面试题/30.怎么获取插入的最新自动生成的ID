@@ -1,0 +1,15 @@
+在MySQL 的插入数据使用自增ID 这种场景，有的时候我们需要获得最新的自增ID，
+比如获取最新的用户ID。常见的做法是执行一次查询，max 或者order by 倒序获取最
+大的ID（低效、存在并发问题）。在MyBatis 里面还有一种更简单的方式：
+insert 成功之后，mybatis 会将插入的值自动绑定到插入的对象的Id 属性中，我们
+用getId 就能取到最新的ID。
+
+<insert id="insert" parameterType="com.gupaoedu.domain.Blog">
+insert into blog (bid, name, author_id)
+values (#{bid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{author,jdbcType=CHAR})
+</insert>
+
+
+
+blogService.addBlog(blog);
+System.out.println(blog.getBid());

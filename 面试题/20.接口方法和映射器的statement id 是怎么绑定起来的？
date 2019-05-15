@@ -1,0 +1,2 @@
+（怎么根据接口方法拿到SQL 语句的？）
+MappedStatement 对象中存储了statement 和SQL 的映射关系

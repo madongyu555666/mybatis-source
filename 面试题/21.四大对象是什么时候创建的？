@@ -1,0 +1,3 @@
+Executor：openSession()
+StatementHandler、ResultsetHandler、ParameterHandler：
+执行SQL 时，在SimpleExecutor 的doQuery()中创建

@@ -1,0 +1,3 @@
+Mapper 继承： 自动生成的部分不变， 创建接口继承原接口， 创建
+MapperExt.xml。在继承接口和MapperExt.xml 中修改。
+通用Mapper：提供支持泛型的通用Mapper 接口，传入对象类型。

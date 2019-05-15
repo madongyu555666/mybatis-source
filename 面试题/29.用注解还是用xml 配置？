@@ -1,0 +1,14 @@
+常用注解：@Insert、@Select、@Update、@Delete、@Param、@Results、
+@Result
+在MyBatis 的工程中，我们有两种配置SQL 的方式。一种是在Mapper.xml 中集中
+管理，一种是在Mapper 接口上，用注解方式配置SQL。很多同学在工作中可能两种方
+式都用过。那到底什么时候用XML 的方式，什么时候用注解的方式呢？
+注解的缺点是SQL 无法集中管理，复杂的SQL 很难配置。所以建议在业务复杂的项
+目中只使用XML 配置的形式，业务简单的项目中可以使用注解和XML 混用的形式。
+Mapper 接口无法注入或Invalid bound statement (not found)
+我们在使用MyBatis 的时候可能会遇到Mapper 接口无法注入，或者mapper
+statement id 跟Mapper 接口方法无法绑定的情况。基于绑定的要求或者说规范，我们
+可以从这些地方去检查一下：
+1、扫描配置，xml 文件和Mapper 接口有没有被扫描到
+2、namespace 的值是否和接口全类名一致
+3、检查对应的sql 语句ID 是否存在

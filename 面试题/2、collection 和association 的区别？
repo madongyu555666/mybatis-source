@@ -1,0 +1,34 @@
+<!--association：一对一-->
+<!-- 另一种联合查询(一对一)的实现，但是这种方式有“N+1”的问题-->
+<resultMap id="BlogWithAuthorQueryMap" type="com.gupaoedu.domain.associate.BlogAndAuthor">
+    <id column="bid" property="bid" jdbcType="INTEGER"/>
+    <result column="name" property="name" jdbcType="VARCHAR"/>
+    <association property="author" javaType="com.gupaoedu.domain.Author"
+                 column="author_id" select="selectAuthor"/> <!-- selectAuthor 定义在下面
+-->
+</resultMap>
+
+<!--collection：一对多、多对多-->
+<!-- 查询文章带评论的结果（一对多） -->
+<resultMap id="BlogWithCommentMap" type="com.gupaoedu.domain.associate.BlogAndComment" extends="BaseResultMap" >
+    <collection property="comment" ofType="com.gupaoedu.domain.Comment">
+        <id column="comment_id" property="commentId" />
+        <result column="content" property="content" />
+    </collection>
+</resultMap>
+
+
+<!-- 按作者查询文章评论的结果（多对多） -->
+<resultMap id="AuthorWithBlogMap" type="com.gupaoedu.domain.associate.AuthorAndBlog" >
+    <id column="author_id" property="authorId" jdbcType="INTEGER"/>
+    <result column="author_name" property="authorName" jdbcType="VARCHAR"/>
+    <collection property="blog" ofType="com.gupaoedu.domain.associate.BlogAndComment">
+        <id column="bid" property="bid" />
+        <result column="name" property="name" />
+        <result column="author_id" property="authorId" />
+        <collection property="comment" ofType="com.gupaoedu.domain.Comment">
+            <id column="comment_id" property="commentId" />
+            <result column="content" property="content" />
+        </collection>
+    </collection>
+</resultMap>

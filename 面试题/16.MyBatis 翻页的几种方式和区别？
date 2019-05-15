@@ -1,0 +1,2 @@
+逻辑翻页：通过RowBounds 对象。
+物理翻页：通过改写SQL 语句，可用插件拦截Executor 实现。

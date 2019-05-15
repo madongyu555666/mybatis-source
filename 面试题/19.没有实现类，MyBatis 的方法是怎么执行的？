@@ -1,0 +1,1 @@
+MapperProxy 代理，代理类的invoke()方法中调用了SqlSession.selectOne()

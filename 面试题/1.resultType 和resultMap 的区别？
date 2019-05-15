@@ -1,0 +1,19 @@
+<!--
+resultType 是<select>标签的一个属性，适合简单对象（POJO、JDK 自带类型：
+    Integer、String、Map 等），只能自动映射，适合单表简单查询。-->
+<select id="selectAuthor" parameterType="int" resultType="com.gupaoedu.domain.Author">
+    select author_id authorId, author_name authorName
+    from author where author_id = #{authorId}
+</select>
+
+<!--resultMap 是一个可以被引用的标签，适合复杂对象，可指定映射关系，适合关联
+复合查询。-->
+<resultMap id="BlogWithAuthorResultMap" type="com.gupaoedu.domain.associate.BlogAndAuthor">
+    <id column="bid" property="bid" jdbcType="INTEGER"/>
+    <result column="name" property="name" jdbcType="VARCHAR"/>
+    <!-- 联合查询，将author 的属性映射到ResultMap -->
+    <association property="author" javaType="com.gupaoedu.domain.Author">
+        <id column="author_id" property="authorId"/>
+        <result column="author_name" property="authorName"/>
+    </association>
+</resultMap>

@@ -1,0 +1,2 @@
+基于mybatis-standalone，MyBatisTest.java —— testSelectByRowBounds()
+>代码在interceptor 包中

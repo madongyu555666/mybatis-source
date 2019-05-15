@@ -1,0 +1,11 @@
+第一次被调用，创建DefaultResultHandler 的时候：
+DefaultResultSetHandler 类中：
+handleResultSet new DefaultResultHandler()
+第二次被调用，处理结果集的时候：
+DefaultResultSetHandler
+    handleResultSets——
+        handleRowValues——
+            handleRowValuesForSimpleResultMap——
+                getRowValue——
+                    createResultObject——
+                        createResultObject——

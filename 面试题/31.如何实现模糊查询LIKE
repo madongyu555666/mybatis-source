@@ -1,0 +1,28 @@
+<!--
+1、字符串拼接
+        在Java 代码中拼接%%（比如name = "%" + name + "%"; ），直接LIKE。因为没
+        有预编译，存在SQL 注入的风险，不推荐使用。
+        2、CONCAT（推荐）-->
+<when test="empName != null and empName != ''">
+    AND e.emp_name LIKE CONCAT(CONCAT('%', #{emp_name, jdbcType=VARCHAR}),'%')
+</when>
+
+<!--3、bind 标签-->
+
+<select id="getEmpList_bind" resultType="empResultMap" parameterType="Employee">
+<bind name="pattern1" value="'%' + empName + '%'" />
+<bind name="pattern2" value="'%' + email + '%'" />
+SELECT * FROM tbl_emp
+<where>
+    <if test="empId != null">
+        emp_id = #{empId,jdbcType=INTEGER},
+    </if>
+    <if test="empName != null and empName != ''">
+        AND emp_name LIKE #{pattern1}
+    </if>
+    <if test="email != null and email != ''">
+        AND email LIKE #{pattern2}
+    </if>
+</where>
+ORDER BY emp_id
+</select>

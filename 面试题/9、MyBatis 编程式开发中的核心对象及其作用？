@@ -1,0 +1,4 @@
+SqlSessionFactoryBuilder 创建工厂类
+SqlSessionFactory 创建会话
+SqlSession 提供操作接口
+MapperProxy 代理Mapper 接口后，用于找到SQL 执行

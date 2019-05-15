@@ -1,0 +1,5 @@
+SqlSessionTemplate 中有内部类SqlSessionInterceptor 对DefaultSqlSession
+进行代理；
+MapperFactoryBean 继承了SqlSessionDaoSupport 获取
+SqlSessionTemplate；
+接口注册到IOC 容器中的beanClass 是MapperFactoryBean。

@@ -1,0 +1,11 @@
+UNPOOLED：不带连接池的数据源。
+POOLED ： 带连接池的数据源， 在PooledDataSource 中维护PooledConnection。
+PooledDataSource 的getConnection()方法流程图：
+
+
+
+
+
+JNDI：使用容器的数据源，比如Tomcat 配置了C3P0。
+自定义数据源：实现DataSourceFactory 接口，返回一个DataSource。
+当MyBatis 集成到Spring 中的时候，使用Spring 的数据源。

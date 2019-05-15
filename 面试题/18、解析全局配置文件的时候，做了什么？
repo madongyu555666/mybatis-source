@@ -1,0 +1,2 @@
+创建Configuration，设置Configuration
+解析Mapper.xml，设置MappedStatement

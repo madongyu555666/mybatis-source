@@ -1,0 +1,5 @@
+使用：继承Interceptor 接口，加上注解，在mybatis-config.xml 中配置
+原理：动态代理，责任链模式，使用Plugin 创建代理对象
+在被拦截对象的方法调用的时候，先走到Plugin 的invoke()方法，再走到
+Interceptor 实现类的intercept()方法，最后通过Invocation.proceed()方法调用被
+拦截对象的原方法

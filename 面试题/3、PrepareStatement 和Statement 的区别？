@@ -1,0 +1,7 @@
+两个都是接口，PrepareStatement 是继承自Statement 的；
+Statement 处理静态SQL，PreparedStatement 主要用于执行带参数的语句；
+PreparedStatement 的addBatch()方法一次性发送多个查询给数据库；
+PS 相似SQL 只编译一次（对语句进行了缓存，相当于一个函数），减少编译次
+数；
+PS 可以防止SQL 注入；
+MyBatis 默认值：PREPARED
